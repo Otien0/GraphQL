@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "./App.css";
+import React, { useState, useEffect } from 'react';
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react-v1";
@@ -8,6 +9,24 @@ import "./welcome.css";
 Amplify.configure(awsconfig);
 
 function App() {
+  const [maplocation, setMaplocation] = useState('');
+
+  useEffect(() => {
+    const getMapLocation = async () =>{
+    const mapData = await fetch('http://localhost:5000/maplocations', {
+      method: 'GET',
+      headers:{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
+    const mapjsonData = await mapData.json();
+    setMaplocation(mapjsonData);
+    console.log(mapjsonData);
+  }
+    getMapLocation();
+  },[])
+
   return (
     <div className="App">
 
@@ -83,11 +102,12 @@ function App() {
             <div className="col-md-8">
               <h2>Welcome Page Sensegrass App</h2>
               <h2>Sensor</h2>
+              <h4>{maplocation.country}</h4>
+              <h4>{maplocation.city}</h4>
             </div>
 
             <div className="col-md-4">
               <h2>Weather</h2>
-
             </div>
           </div>
         </div>
