@@ -1,0 +1,58 @@
+import './App.css';
+// import {Route, BrowserRouter, Routes, Navigate } from 'react-router-dom';
+// import Footer from "./component/layout/Footer/Footer";
+// import Home from "./component/Home/Home";
+// import LoginSignUp from "./component/User/LoginSignUp";
+// import ForgotPassword from "./component/User/ForgotPassword";
+// import ResetPassword from "./component/User/ResetPassword";
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports';
+import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+
+Amplify.configure(awsconfig);
+// import Contact from "./component/layout/Contact/Contact";
+// import About from "./component/layout/About/About";
+// import NotFound from "./component/layout/Not Found/NotFound";
+
+
+function App() {
+  return (
+    // <BrowserRouter>
+    //   <div className="App">
+    //       <Routes>
+    //           {/* Public Routes */}
+    //           <Route path="/" element={<LoginSignUp/>} />
+    //           <Route path="/forgotpassword" element={<ForgotPassword/>} />
+    //           <Route path="/passwordreset" element={<ResetPassword/>} />
+
+    //           {/* Protected Routes */}
+    //           {/* <Route path='/home' element={ <PrivateRoute><Home /></PrivateRoute>} /> */}
+    //           {/* <Route path='/about' element={<About/>}/>
+    //           <Route path='/contact' element={<Contact/>}/> */}
+    //           {/* catch all */}
+    //           {/* <Route path="*" element={<NotFound />} /> */}
+
+    //       </Routes>
+    //   </div>
+    // </BrowserRouter>
+
+    <div className="App">
+      <header className="App-header">
+        <AmplifySignOut />
+        <h2>My App Content</h2>
+      </header>
+    </div>
+  );
+}
+
+export default withAuthenticator(App);
+
+// export function PrivateRoute({ children }) {
+//   if(localStorage.getItem('user'))
+//   {
+//       return children;
+//   }
+//   else{
+//       return <Navigate to='/login' replace={true} />;
+//   }
+// }
