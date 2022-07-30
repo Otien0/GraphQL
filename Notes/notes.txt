@@ -1,1 +1,29 @@
- 
+# Getting Started with GraphQL using React and Nodejs.
+
+GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data, as it gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+
+# Advantage Over REST APIs
+The main advantage of GraphQl over REST is that REST responses contain too much data or sometimes not enough data, which creates the need for another request. GraphQL solves this problem by fetching only the exact and specific data in a single request.
+
+GraphQL is an application layer server-side technology that is used for executing queries with existing data while REST is a software architectural style that defines a set of constraints for creating Web services. GraphQL can be organized in terms of a schema whereas REST can be arranged in terms of endpoints.
+
+GraphQL allows making multiple resources request in a single query call, which saves a lot of time and bandwidth by reducing the number of network round trips to the server. It also helps to save waterfall network requests, where you need to resolve dependent resources on previous requests.
+
+# Documentaion Link:
+
+# https://graphql.org/learn/
+
+# Advantages of GraphQL:
+#                       https://stablekernel.com/article/advantages-and-disadvantages-of-graphql/
+#                       https://dev.to/blessinghirwa/stop-using-rest-for-apis-53n
+
+> GraphQL offers many benefits over REST APIs. One of the main benefits is clients have the ability to dictate exactly what they need from the server, and receive that data in a predictable way.
+> Another big benefit is the ability to retrieve many resources in a single request.
+> Another benefit is that it is strongly-typed which allows API consumers to know exactly what data is available, and in what form it exists.
+
+
+
+# Disadvantages of GraphQL:
+> One disadvantage is that queries always return a HTTP status code of 200, regardless of whether or not that query was successful. If your query is unsuccessful, your response JSON will have a top-level errors key with associated error messages and stacktrace. This can make it much more difficult to do error handling and can lead to additional complexity for things like monitoring.
+> Another disadvantage is the lack of built-in caching support.
+> complexity.
