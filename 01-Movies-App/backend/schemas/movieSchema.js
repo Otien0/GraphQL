@@ -1,7 +1,7 @@
 const graphql = require("graphql");
 const _ = require('lodash');
 
-const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt } = graphql;
 
 const movies = [
     { title: 'Avatar', genre: 'Sci-fi', id: '1'},
@@ -11,12 +11,29 @@ const movies = [
     { title: 'Avengers', genre: 'Sci-fi', id: '5'},
 ]
 
+const directors = [
+    { name: 'James Cameron', age: '67', id: '1'},
+    { name: 'James Cameron', age: '67', id: '2'},
+    { name: 'Peter Jackson', age: '60', id: '3'},
+    { name: 'Gore Verbinski', age: '65', id: '4'},
+    { name: 'Ruso Brothers', age: '50', id: '5'},
+]
+
 const MovieType = new GraphQLObjectType({
     name: 'Movie',
     fields: () => ({
-        id: { type: GraphQLString },
+        id: { type: GraphQLID },
         title: { type: GraphQLString },
         genre: { type: GraphQLString }
+    })
+});
+
+const DirectorType = new GraphQLObjectType({
+    name: 'Director',
+    fields: () => ({
+        id: { type: GraphQLID },
+        name: { type: GraphQLString },
+        age: { type: GraphQLInt }
     })
 });
 
@@ -25,10 +42,20 @@ const RootQuery = new GraphQLObjectType({
     fields: () => ({
         movie: {
             type: MovieType,
-            args: { id: { type: GraphQLString } },
+            args: { id: { type: GraphQLID } },
             resolve(parrent, args) {
                 // Get data from database
+                // console.log(typeof args.id)
                 return _.find(movies, { id: args.id })
+            }
+        },
+        director: {
+            type: DirectorType,
+            args: { id: { type: GraphQLID } },
+            resolve(parrent, args) {
+                // Get data from database
+                // console.log(typeof args.id)
+                return _.find(directors, { id: args.id })
             }
         }
     })
