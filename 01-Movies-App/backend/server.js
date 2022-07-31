@@ -18,8 +18,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/graphql', graphqlHTTP ({
-    schema
+    schema,
+    graphiql: true
 }))
+
+
 if(process.env.NODE_ENV === 'development')
 {
 
