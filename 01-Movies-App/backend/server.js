@@ -4,12 +4,6 @@ const express               = require('express'),
       dotEnv                = require('dotenv'),
       cors                  = require('cors'),
       connectDB             = require('./db');
-    //   errorMiddleware       = require('./middleware/error');
-;
-
-
-const user                  = require('./routes/userRoute');
-const blog                  = require("./routes/blogRoute");
 
 dotEnv.config();
 
@@ -22,11 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }))
 
 
-// API ROUTES
-app.use('/api/v1', user);
-app.use("/api/v1", blog);
-
-
 if(process.env.NODE_ENV === 'development')
 {
 
@@ -36,8 +25,6 @@ if(process.env.NODE_ENV === 'development')
 
 }
 
-// Error Handling middlewares
-app.use(errorMiddleware);
 
 app.all('*', (req, res) => {
     res.status(404).send('<h1>404! requested URL not found</h1>');

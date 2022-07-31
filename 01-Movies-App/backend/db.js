@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
+const dotEnv   = require('dotenv');
 
-const dbUrl = process.env.MONGO_URI || 'mongodb+srv://myUserAdmin:EVE6pJC0YZG3N1R1@cluster0.vlsqb.gcp.mongodb.net/Movie-App?retryWrites=true&w=majority';
+dotEnv.config();
+
+const dbUrl = process.env.MONGO_URI;
 
 const connectDB = () => {
     mongoose.connect(dbUrl, { useUnifiedTopology: true , useNewUrlParser: true})

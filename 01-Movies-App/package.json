@@ -1,13 +1,17 @@
 {
-  "name": "movie-app",
+  "name": "movies-app",
   "version": "1.0.0",
-  "description": "movie-app with grphql and node",
+  "description": "movies-app with graphQL and Node",
   "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js",
     "debug": "node --inspect backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "GraphQL"
   },
   "author": "mourice-oduor",
   "license": "ISC",
@@ -16,6 +20,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.5.0",
     "mongoose": "^6.5.0",
     "nodemon": "^2.0.19"
   }
