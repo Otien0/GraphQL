@@ -31,3 +31,7 @@ GraphQL allows making multiple resources request in a single query call, which s
 > One disadvantage is that queries always return a HTTP status code of 200, regardless of whether or not that query was successful. If your query is unsuccessful, your response JSON will have a top-level errors key with associated error messages and stacktrace. This can make it much more difficult to do error handling and can lead to additional complexity for things like monitoring.
 > Another disadvantage is the lack of built-in caching support.
 > complexity.
+
+# Other Links:
+>           https://flaviocopes.com/graphql-node-express/
+>           https://snipcart.com/blog/graphql-nodejs-express-tutorial
