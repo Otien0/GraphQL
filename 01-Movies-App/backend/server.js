@@ -3,7 +3,9 @@ const express               = require('express'),
       bodyParser            = require('body-parser'),
       dotEnv                = require('dotenv'),
       cors                  = require('cors'),
-      connectDB             = require('./db');
+      connectDB             = require('./db'),
+      { graphqlHTTP }       = require('express-graphql'),
+      schema                = require('./schemas/movieSchema');
 
 dotEnv.config();
 
@@ -15,7 +17,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }))
 
-
+app.use('/graphql', graphqlHTTP ({
+    schema
+}))
 if(process.env.NODE_ENV === 'development')
 {
 
@@ -30,7 +34,7 @@ app.all('*', (req, res) => {
     res.status(404).send('<h1>404! requested URL not found</h1>');
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Movie-App server running on port ${PORT}`);
 });
