@@ -35,3 +35,12 @@ GraphQL allows making multiple resources request in a single query call, which s
 # Other Links:
 >           https://flaviocopes.com/graphql-node-express/
 >           https://snipcart.com/blog/graphql-nodejs-express-tutorial
+
+# Queries and Mutations:
+>						https://graphql.org/learn/queries/
+>						https://fauna.com/blog/graphql-mutations
+
+
+
+
+
