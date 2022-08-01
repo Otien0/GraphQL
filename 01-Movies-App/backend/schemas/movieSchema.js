@@ -15,6 +15,7 @@ const MovieType = new GraphQLObjectType({
             type: DirectorType,
             resolve(parrent, args){
                 // return _.find(directors, { id: parrent.directorId })
+                return Director.findById(parrent.directorId)
             }
         }
     })
@@ -30,6 +31,7 @@ const DirectorType = new GraphQLObjectType({
             type: new GraphQLList(MovieType),
             resolve(parrent, args){
                 // return _.filter(movies, { directorId: parrent.id })
+                return Movie.find({ directorId: parrent.id })
             }
         }
     })
@@ -45,6 +47,7 @@ const RootQuery = new GraphQLObjectType({
                 // Get data from database
                 // console.log(typeof args.id)
                 // return _.find(movies, { id: args.id })
+                return Movie.findById(args.id)
             }
         },
         director: {
@@ -54,18 +57,21 @@ const RootQuery = new GraphQLObjectType({
                 // Get data from database
                 // console.log(typeof args.id)
                 // return _.find(directors, { id: args.id })
+                return Director.findById(args.id)
             }
         },
         movies: {
             type: new GraphQLList(MovieType),
                 resolve(parrent, args){
                     // return movies
+                    return Movie.find({})
                 }
         },
         directors: {
             type: new GraphQLList(DirectorType),
                 resolve(parrent, args){
                     // return directors
+                    return Director.find({})
                 }
         }
     })
@@ -85,7 +91,23 @@ const Mutation = new GraphQLObjectType({
                     name: args.name,
                     age: args.age
                 })
-                director.save();
+                return director.save();
+            }
+        },
+        addMovie: {
+            type: MovieType,
+            args: {
+                title: { type: GraphQLString },
+                genre: { type: GraphQLString },
+                directorId: { type: GraphQLID }
+            },
+            resolve(parrent, args){
+                let movie = new Movie({
+                    title: args.title,
+                    genre: args.genre,
+                    directorId: args.directorId
+                })
+                return movie.save();
             }
         }
     }
