@@ -4,11 +4,11 @@ const _ = require('lodash');
 const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt } = graphql;
 
 const movies = [
-    { title: 'Avatar', genre: 'Sci-fi', id: '1'},
-    { title: 'Titanic', genre: 'Romance', id: '2'},
-    { title: 'Lord Of The Rings', genre: 'Adventure', id: '3'},
-    { title: 'Pirates Of The Carribean', genre: 'Adventure', id: '4'},
-    { title: 'Avengers', genre: 'Sci-fi', id: '5'},
+    { title: 'Avatar', genre: 'Sci-fi', id: '1', directorId: '1'},
+    { title: 'Titanic', genre: 'Romance', id: '2', directorId: '2'},
+    { title: 'Lord Of The Rings', genre: 'Adventure', id: '3', directorId: '3'},
+    { title: 'Pirates Of The Carribean', genre: 'Adventure', id: '4', directorId: '4'},
+    { title: 'Avengers', genre: 'Sci-fi', id: '5', directorId: '5'}
 ]
 
 const directors = [
@@ -16,7 +16,7 @@ const directors = [
     { name: 'James Cameron', age: '67', id: '2'},
     { name: 'Peter Jackson', age: '60', id: '3'},
     { name: 'Gore Verbinski', age: '65', id: '4'},
-    { name: 'Ruso Brothers', age: '50', id: '5'},
+    { name: 'Ruso Brothers', age: '50', id: '5'}
 ]
 
 const MovieType = new GraphQLObjectType({
@@ -24,7 +24,13 @@ const MovieType = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLID },
         title: { type: GraphQLString },
-        genre: { type: GraphQLString }
+        genre: { type: GraphQLString },
+        director: {
+            type: DirectorType,
+            resolve(parrent, args){
+                return _.find(directors, { id: parrent.directorId })
+            }
+        }
     })
 });
 
