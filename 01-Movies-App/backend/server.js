@@ -25,11 +25,9 @@ app.use('/graphql', graphqlHTTP ({
 
 if(process.env.NODE_ENV === 'development')
 {
-
     app.get('/', (req, res) => {
         res.send('Welcome to GraphQL Movie-App Backend side');
-    }); 
-
+    });
 }
 
 
