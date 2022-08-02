@@ -1,16 +1,6 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client';
-
-
-const GET_MOVIES_QUERY = gql`
-  {
-    movies{
-      title
-      genre
-      id
-    }
-  }
-`
+import { useQuery } from '@apollo/client';
+import { GET_MOVIES_QUERY } from '../queries/queries';
 
 function MovieList() {
 

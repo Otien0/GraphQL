@@ -1,21 +1,20 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client';
-
-
-const GET_DIRECTORS_QUERY = gql`
-  {
-    directors{
-      name
-      age
-      id
-    }
-  }
-`
+import { useQuery } from '@apollo/client';
+import { GET_DIRECTORS_QUERY } from '../queries/queries';
 
 function AddMovies() {
 
   const { loading, data, error } = useQuery(GET_DIRECTORS_QUERY)
-  if(loading) return <p> Loading... </p>
+
+  const renderDirectors = () => {
+    if(loading) return <option disabled> Loading...</option>
+    if(error) return <option disabled> Something Went Wrong!</option>
+
+    return data.directors.map( director => {
+        return <option key={director.id}>{director.name}</option>
+    })
+
+  }
 
   return (
     <div>
@@ -35,7 +34,8 @@ function AddMovies() {
                 <label htmlFor="director">Director:</label>
 
                 <select name="director" id="director">
-                    <option value="director">Select a Director</option>
+                    <option>Select a Director</option>
+                    {renderDirectors()}
                 </select>
             </div>
 
