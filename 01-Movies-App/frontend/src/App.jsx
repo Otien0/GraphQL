@@ -2,7 +2,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Movie App Uisng MERNG</h1>
+      <h1>Movie App Using MERNG</h1>
     </div>
   )
 }
