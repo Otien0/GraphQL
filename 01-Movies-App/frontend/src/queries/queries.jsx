@@ -19,6 +19,24 @@ const GET_DIRECTORS_QUERY = gql`
     }
   }
 `
+const GET_MOVIE_QUERY = gql`
+  query($id: ID){
+    movie(id: $id){
+      id
+      title
+      genre
+      director{
+        id
+        name
+        age
+        movies{
+          title
+          id
+        }
+      }
+    }
+  }
+`
 
 const ADD_MOVIE_MUTATION = gql`
     mutation( $title: String!, $genre: String!, $directorId: ID! ){
@@ -29,4 +47,4 @@ const ADD_MOVIE_MUTATION = gql`
     }
 `
 
-export { GET_MOVIES_QUERY, GET_DIRECTORS_QUERY, ADD_MOVIE_MUTATION }
+export { GET_MOVIES_QUERY, GET_DIRECTORS_QUERY, ADD_MOVIE_MUTATION, GET_MOVIE_QUERY }
