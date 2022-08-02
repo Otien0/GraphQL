@@ -1,4 +1,5 @@
 import MovieList from "./components/MovieList"
+import AddMovies from "./components/AddMovies";
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 
@@ -14,6 +15,7 @@ function App() {
       <div className="App">
         <h1>Movie App Using MERNG</h1>
         <MovieList/>
+        <AddMovies/>
     </div>
     </ApolloProvider>
   )
