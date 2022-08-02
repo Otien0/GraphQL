@@ -49,6 +49,8 @@ GraphQL allows making multiple resources request in a single query call, which s
 	
 	Apollo Docs:
 				https://www.apollographql.com/docs/react/
+				
+	Intro: https://blog.logrocket.com/graphql-local-state-management-apollo/
 
 
 
