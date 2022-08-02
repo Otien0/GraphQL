@@ -40,7 +40,15 @@ GraphQL allows making multiple resources request in a single query call, which s
 >						https://graphql.org/learn/queries/
 >						https://fauna.com/blog/graphql-mutations
 
+01 > Movie-App:
 
+	Built using MERNG Stack, with Apollo and Vite for frontend.
+	
+	Vite-js Docs:
+				https://vitejs.dev/guide/#scaffolding-your-first-vite-project
+	
+	Apollo Docs:
+				https://www.apollographql.com/docs/react/
 
 
 
