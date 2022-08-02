@@ -12,7 +12,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
+      <div className="App" style={{ placeContent: 'center'}}>
         <h1>Movie App Using MERNG</h1>
         <MovieList />
         <AddMovies />
